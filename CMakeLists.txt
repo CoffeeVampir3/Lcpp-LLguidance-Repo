@@ -48,3 +48,12 @@ target_include_directories(broken_example PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${llama_SOURCE_DIR}
 )
+
+add_executable(fixed_example
+        fixed_example.cpp
+)
+target_link_libraries(fixed_example PUBLIC llama common)
+target_include_directories(fixed_example PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${llama_SOURCE_DIR}
+)

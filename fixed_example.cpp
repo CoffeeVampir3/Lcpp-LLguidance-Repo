@@ -38,6 +38,7 @@ int main() {
 start: "Hello World")";
 
     llama_sampler_chain_add(sampler, llama_sampler_init_llg(llama_model_get_vocab(model), "lark", grammar_data));
+    llama_sampler_chain_add(sampler, llama_sampler_init_dist(1337));
 
     const auto prompt = "Respond hello world.";
     std::cout << "Prompt: " << prompt << std::endl;
@@ -62,7 +63,6 @@ start: "Hello World")";
 
     for (int i = 0; i < max_tokens; i++) {
         llama_token new_token = llama_sampler_sample(sampler, ctx, -1);
-        llama_sampler_accept(sampler, token);
 
         std::cout << new_token << std::endl;
         output_tokens.push_back(new_token);
